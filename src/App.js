@@ -17,6 +17,12 @@ const Track = styled.div`
 	padding: 1rem;
 `;
 
+const StepBtn = styled.button`
+	width: 5rem;
+	height: 5rem;
+	margin-bottom: 1rem;
+`;
+
 function App() {
 	const [steps, setSteps] = useState([
 		{ stepBar: 1, play: false },
@@ -29,19 +35,23 @@ function App() {
 		{ stepBar: 8, play: false },
 	]);
 
-	const stepRef = useRef();
-	// {steps.map((stepBar) => (
-	// 	<StepBtn key={stepBar}></StepBtn>
-	// ))}
+	const stepRef = useRef(steps);
+
 	const onToggle = (stepBar) => {
 		setSteps(
 			steps.map((step) => (step.stepBar === stepBar ? { ...step, play: !step.play } : step))
 		);
 	};
+
 	return (
 		<Track>
 			<TrackStep></TrackStep>
-			<TestSteps steps={steps} onToggle={onToggle}></TestSteps>
+			<TestSteps steps={steps} onToggle={onToggle} ref={stepRef}></TestSteps>
+			<>
+				{steps.map((steps) => (
+					<StepBtn>{steps.play ? "on" : "off"}</StepBtn>
+				))}
+			</>
 		</Track>
 	);
 }
