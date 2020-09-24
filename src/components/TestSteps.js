@@ -9,6 +9,7 @@ const StepBtn = styled.button`
 `;
 
 function Step({ step, onToggle }) {
+	console.log(step);
 	return (
 		<StepBtn onClick={() => onToggle(step.stepBar)} play={step.play}>
 			{step.stepBar}

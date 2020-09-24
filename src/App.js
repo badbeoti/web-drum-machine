@@ -45,7 +45,7 @@ function App() {
 
 	return (
 		<Track>
-			<TrackStep></TrackStep>
+			<TrackStep steps={steps}></TrackStep>
 			<TestSteps steps={steps} onToggle={onToggle} ref={stepRef}></TestSteps>
 			<>
 				{steps.map((steps) => (
